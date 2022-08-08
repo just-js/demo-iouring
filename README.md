@@ -1,4 +1,4 @@
-[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-908a85?logo=gitpod)](https://gitpod.io/#https://gist.github.com/billywhizz/70dd42425ae0979871a24aa9169eb104)
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-908a85?logo=gitpod)](https://gitpod.io/#https://github.com/just-js/demo-iouring)
 # iouring module example
 
 This is a demo of the [just-js](https://just.billywhizz.io/) [iouring module](https://github.com/just-js/modules/tree/main/iouring). It does the same thing
