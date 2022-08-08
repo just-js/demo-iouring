@@ -8,4 +8,4 @@ tasks:
       make -C just/modules/iouring library
       sudo make -C just/modules/iouring install install-debug
     command: |
-      just copy.js
+      just copy.js ./in.bin ./out.bin
