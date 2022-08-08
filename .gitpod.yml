@@ -7,3 +7,4 @@ tasks:
       sudo make install install-debug
       make -C modules/iouring library
       sudo make -C modules/iouring install install-debug
+      exit
