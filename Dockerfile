@@ -9,6 +9,7 @@ RUN sh -c "$(curl -sSL https://raw.githubusercontent.com/just-js/just/current/in
 RUN make -C just install
 ENV JUST_HOME=/build/just
 ENV JUST_TARGET=/build/just
+RUN make -C just/modules/iouring library
 WORKDIR /app
 COPY copy.js ./
 RUN just build --clean --static copy.js

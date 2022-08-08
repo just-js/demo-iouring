@@ -29,6 +29,9 @@ const RINGSIZE = 256
 const BLOCKSIZE	= 128 * 1024
 
 // these buffers will be used to hold the data being read and written
+// we give each buffer and index which is passed into io_uring when
+// submitting and received bacj when completing so we can find correct
+// buffer
 const buffers = new Array(RINGSIZE).fill(0)
   .map((v, index) => ({ buf: calloc(1, BLOCKSIZE), index }))
 // we keep track of which buffers are waiting on reads or writes here
@@ -152,12 +155,16 @@ function copyFile (infd, outfd, ring, size) {
 
 // read the command line args, with defaults
 const [
-  inFileName = '/dev/shm/in.bin',
-  outFileName = '/dev/shm/out.bin'
+  inFileName = '/tmp/in.bin',
+  outFileName = '/tmp/out.bin'
 ] = just.args[0] === 'just' ? just.args.slice(2) : just.args.slice(1)
 
 // create a 1.0 GB input file filled with random bytes if it does not exist
-if (!isFile(inFileName)) dd(inFileName, 65536, 16 * 1024)
+if (!isFile(inFileName)) {
+  just.print('creating input file')
+  dd(inFileName, 65536, 16 * 1024)
+  just.print('done')
+}
 
 // open the input file
 const infd = fs.open(inFileName, O_RDONLY)

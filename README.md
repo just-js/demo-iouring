@@ -8,13 +8,11 @@ as the example copy [program](https://github.com/axboe/liburing/blob/master/exam
 
 just copy.js [fromPath] [toPath]
 
-- fromPath: path to the file to copy from, default /dev/shm/in.bin
-- toPath: path to the file to copy to, default /dev/shm/out.bin
+- fromPath: path to the file to copy from, default /tmp/in.bin
+- toPath: path to the file to copy to, default /tmp/out.bin
 
-if no arguments are passed and the file /dev/shm.bin does not exist then
-the program will use system dd tool to create a 1GB file filled with random 
-bytes read from /dev/urandom
-
+if no arguments are passed and the file /tmp/in.bin does not exist then
+the program will create a 1GB file filled with random bytes from /dev/urandom
 
 # build and run locally
 
@@ -50,5 +48,5 @@ docker build -t just-iouring-demo .
 
 ## run
 ```bash
-docker run -it --rm -v /dev/urandom:/dev/urandom -v /dev/shm:/dev/shm just-iouring-demo
+docker run -it --rm -v /dev/urandom:/dev/urandom -v /tmp:/tmp just-iouring-demo
 ```
